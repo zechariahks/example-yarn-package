@@ -5,18 +5,15 @@ phases:
     runtime-versions:
       nodejs: 12
     commands:
-      - aws codeartifact login --tool npm --domain zechak --repository npm-store # --region eu-central-1
+      #- aws codeartifact login --tool npm --domain zechak --repository npm-store # --region eu-central-1
       - START=$(date +%s)
       - yarn install
       - END=$(date +%s)
       - DIFF=$(( $END - $START ))
       - echo "It took $DIFF seconds for yarn install"
-  pre_build:
-    commands:
-      - yarn test
   build:
     commands:
-      - yarn build  
+      - echo "inside build" 
 # cache:
 #   paths:
 #     - 'node_modules/**/*'
