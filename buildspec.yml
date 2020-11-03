@@ -5,7 +5,8 @@ phases:
     runtime-versions:
       nodejs: 12
     commands:
-      - aws codeartifact login --tool npm --domain zechak --repository reactify-zk # --region eu-central-1
+      #- aws codeartifact login --tool npm --domain zechak --repository reactify-zk # --region eu-central-1
+      - export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain zechak --domain-owner 413988070266 --query authorizationToken --output text`
       - START=$(date +%s)
       - yarn install
       - END=$(date +%s)
